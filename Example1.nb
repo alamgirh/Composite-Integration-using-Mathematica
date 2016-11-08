@@ -1,0 +1,253 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 4.0,
+MathReader 4.0, or any compatible application. The data for the notebook 
+starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      8703,        210]*)
+(*NotebookOutlinePosition[      9357,        233]*)
+(*  CellTagsIndexPosition[      9313,        229]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(Clear["\<`*\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(<< NumericalMath`GaussianQuadrature`\)], "Input"],
+
+Cell[BoxData[
+    \(\(STriangle4[n0_] := 
+        Module[{n = n0}, \ \[IndentingNewLine]C1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]X1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]Y1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]XI = 
+            Table[0, {i, 1, n}]; \[IndentingNewLine]WI = 
+            Table[0, {i, 1, n}]; \[IndentingNewLine]GQ = 
+            GaussianQuadratureWeights[n, \(-1\), 
+              1]; \[IndentingNewLine]Do[{XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+                GQ\_\(\(\[LeftDoubleBracket]\)\(i, 1\)\(\[RightDoubleBracket]\
+\)\); \[IndentingNewLine]WI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+                GQ\_\(\(\[LeftDoubleBracket]\)\(i, 2\)\(\[RightDoubleBracket]\
+\)\);}, {i, 1, n}]; \[IndentingNewLine]For[i = 1, 
+            i \[LessEqual] 
+              n, \(i++\), \[IndentingNewLine]\(For[j = 1, 
+                j \[LessEqual] n, \(j++\), \[IndentingNewLine]k = 
+                  i + \((n - 
+                          j)\)\ n; \[IndentingNewLine]C1\_\(\(\
+\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\) = \((2 - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\))\)\/4\ \ WI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ WI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\); \[IndentingNewLine]X1\
+\_\(\(\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\) = \(\(-1\) + 3\ \
+XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)\)\/4; \
+\[IndentingNewLine]Y1\_\(\(\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\
+\)\) = \(\(-1\) - \
+XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) + 3\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)\)\/4;\
+\[IndentingNewLine]];\)];];\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(n = 
+        Input["\<Enter the Order of Gauss Legendre Quadrature rule:\>"];\)\), \
+"\[IndentingNewLine]", 
+    \(STriangle4[n]\), "\[IndentingNewLine]", 
+    \(\(f[u_, v_] := 
+        1\/8\ \((13 - u - 
+              2\ v)\)\ \((1\/4\ \((15 - u\ \((\(-3\) + v)\) + 7\ v)\))\)\^\(-\
+\(1\/2\)\);\)\), "\[IndentingNewLine]", 
+    \(F[u_, v_] := f[u, v] + f[\(-v\), \(-u\)]\), "\[IndentingNewLine]", 
+    \(\(H1 = Table[0, {i, 1, 4\ n\^2}];\)\), "\n", 
+    \(\(m = 
+        Input[\*"\"\<Enter the value of n then discretise T into 4 \!\(n\^2\) \
+triangle:\>\""];\)\), "\n", 
+    \(\(App = Table[0, {i, 1, m}];\)\), "\n", 
+    \(\(For[l = 1, l \[LessEqual] m, \(l++\), \n
+        For[k = 1, 
+          k \[LessEqual] 
+            n\^2, \(k++\), \
+\[IndentingNewLine]\(H1\_\(\(\[LeftDoubleBracket]\)\(k\)\(\
+\[RightDoubleBracket]\)\) = \[Sum]\+\(i = 0\)\%\(2\ l - 1\)\(\[Sum]\+\(j = \
+0\)\%\(2\ l - 1 - i\)F[\(\(\ \)\(X1\_\(\(\[LeftDoubleBracket]\)\(k\)\(\
+\[RightDoubleBracket]\)\) + 2\ \((i - l)\) + 1\)\)\/\(2\ l\), \(Y1\_\(\(\
+\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\) + 2\ \((j - l)\) + 1\)\
+\/\(2\ l\)\ ]\)\[IndentingNewLine] + \[Sum]\+\(i = 0\)\%\(2\ l - \
+2\)\(\[Sum]\+\(j = 0\)\%\(2\ l - 2 - i\)F[\(\(-X1\_\(\(\[LeftDoubleBracket]\)\
+\(k\)\(\[RightDoubleBracket]\)\)\) + 2\ \((i - l)\) + 1\)\/\(2\ l\), \
+\(\(-Y1\_\(\(\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\)\) + 2\ \
+\((j - l)\) + 1\)\/\(2\ l\)]\);\)]; \[IndentingNewLine]App\_\(\(\
+\[LeftDoubleBracket]\)\(l\)\(\[RightDoubleBracket]\)\) = 
+          1\/\(4\ l\^2\)\ \(\[Sum]\+\(k = 1\)\%\(n\^2\)C1\_\(\(\
+\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\)\ H1\_\(\(\
+\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\)\);];\)\), "\
+\[IndentingNewLine]", 
+    \(TableForm[
+      Table[{i\^2, 
+          PaddedForm[
+            App\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\), \
+{20, 15}]}, {i, 1, 
+          m}], \[IndentingNewLine]TableHeadings -> {None, \
+{\*"\"\<\!\(n\^2\)\>\"", "\<\t\t\t\>" "\<Result\>"}}]\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[GridBox[{
+          {"\<\"\\!\\(n\\^2\\)\"\>", \("\t\t\t"\ "Result"\)},
+          {"1", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026522519\"\>",
+                3.5496130265225192,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"4", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789507\"\>",
+                3.5496130267895065,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"9", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789713\"\>",
+                3.5496130267897135,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"16", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789717\"\>",
+                3.5496130267897166,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"25", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789716\"\>",
+                3.5496130267897157,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"36", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789716\"\>",
+                3.5496130267897161,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"49", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789717\"\>",
+                3.5496130267897175,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"64", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789717\"\>",
+                3.5496130267897166,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"81", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789716\"\>",
+                3.5496130267897161,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"100", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789716\"\>",
+                3.5496130267897161,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]}
+          },
+        RowSpacings->1,
+        ColumnSpacings->3,
+        RowAlignments->Baseline,
+        ColumnAlignments->{Left}],
+      (TableForm[ #, TableHeadings -> {None, {"\!\(n\^2\)", 
+        Times[ "\t\t\t", "Result"]}}]&)]], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 517}},
+WindowSize->{792, 483},
+WindowMargins->{{-33, Automatic}, {Automatic, 8}}
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1717, 49, 48, 1, 30, "Input"],
+Cell[1768, 52, 69, 1, 30, "Input"],
+Cell[1840, 55, 2226, 37, 385, "Input"],
+
+Cell[CellGroupData[{
+Cell[4091, 96, 2054, 40, 402, "Input"],
+Cell[6148, 138, 2539, 69, 201, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+

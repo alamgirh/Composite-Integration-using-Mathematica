@@ -1,0 +1,952 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 4.0,
+MathReader 4.0, or any compatible application. The data for the notebook 
+starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     35637,        910]*)
+(*NotebookOutlinePosition[     36290,        933]*)
+(*  CellTagsIndexPosition[     36246,        929]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(<< NumericalMath`GaussianQuadrature`\)], "Input"],
+
+Cell[BoxData[
+    \(\(STriangle4[n0_] := 
+        Module[{n = n0}, \ \[IndentingNewLine]C1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]X1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]Y1 = 
+            Table[0, {i, 1, n\^2}]; \[IndentingNewLine]XI = 
+            Table[0, {i, 1, n}]; \[IndentingNewLine]WI = 
+            Table[0, {i, 1, n}]; \[IndentingNewLine]GQ = 
+            GaussianQuadratureWeights[n, \(-1\), 
+              1]; \[IndentingNewLine]Do[{XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+                GQ\_\(\(\[LeftDoubleBracket]\)\(i, 1\)\(\[RightDoubleBracket]\
+\)\); \[IndentingNewLine]WI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+                GQ\_\(\(\[LeftDoubleBracket]\)\(i, 2\)\(\[RightDoubleBracket]\
+\)\);}, {i, 1, n}]; \[IndentingNewLine]For[i = 1, 
+            i \[LessEqual] 
+              n, \(i++\), \[IndentingNewLine]\(For[j = 1, 
+                j \[LessEqual] n, \(j++\), \[IndentingNewLine]k = 
+                  i + \((n - 
+                          j)\)\ n; \[IndentingNewLine]C1\_\(\(\
+\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\) = \((2 - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\))\)\/4\ \ WI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ WI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\); \[IndentingNewLine]X1\
+\_\(\(\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\)\) = \(\(-1\) + 3\ \
+XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)\)\/4; \
+\[IndentingNewLine]Y1\_\(\(\[LeftDoubleBracket]\)\(k\)\(\[RightDoubleBracket]\
+\)\) = \(\(-1\) - \
+XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) + 3\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\) - XI\_\(\(\
+\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ XI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)\)\/4;\
+\[IndentingNewLine]];\)];];\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(n = 
+        Input["\<Enter the Order of Gauss Legendre Quadrature rule:\>"];\)\), \
+"\[IndentingNewLine]", 
+    \(\(STriangle4[n];\)\), "\[IndentingNewLine]", 
+    \(TableForm[
+      Table[{PaddedForm[
+            C1\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\), \
+{20, 15}], 
+          PaddedForm[
+            X1\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) // 
+              N, {20, 15}], \[IndentingNewLine]PaddedForm[
+            Y1\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\) // 
+              N, {20, 15}]}, {i, 1, n\^2}], 
+      TableHeadings -> {None, {"\<\t\t\t\>" \*"\"\<\!\(C\_k\)\>\"", "\<\t\t\t\
+\>" \*"\"\<\!\(X\_k\)\>\"", "\<\t\t\t\>" \*"\"\<\!\(Y\_k\)\>\""}}]\)}], \
+"Input"],
+
+Cell[BoxData[
+    TagBox[GridBox[{
+          {\("\t\t\t"\ "\!\(C\_k\)"\), \("\t\t\t"\ "\!\(X\_k\)"\), \("\t\t\t"\
+\ "\!\(Y\_k\)"\)},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.008383178231877\"\>",
+                .0083831782318768526,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.973906455024851\"\>",
+                -.97390645502485129,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.924309369660666\"\>",
+                .92430936966066579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.016229336623041\"\>",
+                .016229336623040838,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.867477088409913\"\>",
+                -.86747708840991244,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.823162009532240\"\>",
+                .82316200953224039,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.018005727931648\"\>",
+                .018005727931647869,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.695363130529179\"\>",
+                -.69536313052917942,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.659589933190976\"\>",
+                .65958993319097625,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.014218420393005\"\>",
+                .014218420393005134,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.487276978085690\"\>",
+                -.48727697808568959,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.461830934257069\"\>",
+                .46183093425706889,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.007972981898571\"\>",
+                .0079729818985712804,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.279190825642200\"\>",
+                -.27919082564219977,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.264071935323162\"\>",
+                .26407193532316153,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.002801080689151\"\>",
+                .0028010806891512101,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.107076867761467\"\>",
+                -.1070768677614668,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.100499858981897\"\>",
+                .10049985898189731,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.000426637441423\"\>",
+                .00042663744142295619,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.000647501146528\"\>",
+                -.00064750114652806223,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.000647501146528\"\>",
+                -.00064750114652803448,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.019988306531199\"\>",
+                .019988306531198985,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.971265451781595\"\>",
+                -.97126545178159451,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.719373646160558\"\>",
+                .71937364616055832,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.039117553014085\"\>",
+                .039117553014084712,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.854064060795284\"\>",
+                -.85406406079528363,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.628998310403505\"\>",
+                .62899831040350529,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.044437151163993\"\>",
+                .044437151163992571,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.664529950865235\"\>",
+                -.6645299508652347,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.482846386111557\"\>",
+                .48284638611155684,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.036780461704774\"\>",
+                .036780461704773601,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.435382796399849\"\>",
+                -.43538279639984862,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.306148389199546\"\>",
+                .30614838919954579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.022765035551479\"\>",
+                .022765035551479088,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.206235641934463\"\>",
+                -.20623564193446248,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.129450392287535\"\>",
+                .12945039228753474,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.010110667549803\"\>",
+                .010110667549803309,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.016701532004414\"\>",
+                -.016701532004413711,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.016701532004414\"\>",
+                -.016701532004413711,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.002801080689151\"\>",
+                .002801080689151211,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.100499858981897\"\>",
+                .10049985898189731,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.107076867761467\"\>",
+                -.10707686776146677,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.031435523240266\"\>",
+                .03143552324026571,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.966994511011860\"\>",
+                -.96699451101186018,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.387958552708296\"\>",
+                .3879585527082956,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.062362772594912\"\>",
+                .0623627725949117,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.832372967976233\"\>",
+                -.83237296797623328,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.315003369000558\"\>",
+                .31500336900055831,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.072897093734371\"\>",
+                .072897093734370519,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.614667579653262\"\>",
+                -.61466757965326158,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.197022723101533\"\>",
+                .19702272310153282,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.063602544468903\"\>",
+                .063602544468902733,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.351461287844349\"\>",
+                -.35146128784434927,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.054383863533048\"\>",
+                .054383863533047916,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.043312161692773\"\>",
+                .043312161692772612,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.088254996035437\"\>",
+                -.088254996035436989,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.088254996035437\"\>",
+                -.088254996035436961,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.022765035551479\"\>",
+                .022765035551479084,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.129450392287535\"\>",
+                .12945039228753474,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.206235641934463\"\>",
+                -.20623564193446248,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.007972981898571\"\>",
+                .0079729818985712804,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.264071935323162\"\>",
+                .26407193532316153,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.279190825642200\"\>",
+                -.27919082564219977,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.039901010364923\"\>",
+                .039901010364922912,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.961830934257069\"\>",
+                -.96183093425706889,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.012723021914310\"\>",
+                -.012723021914310378,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.080124975391152\"\>",
+                .080124975391152278,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.806148389199546\"\>",
+                -.80614838919954579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.064617203600151\"\>",
+                -.064617203600151385,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.095986831742216\"\>",
+                .095986831742215589,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.554383863533048\"\>",
+                -.55438386353304792,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.148538712155651\"\>",
+                -.1485387121556507,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.087344939608496\"\>",
+                .087344939608496,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.250000000000000\"\>",
+                -.25,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.250000000000000\"\>",
+                -.25,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.063602544468903\"\>",
+                .063602544468902733,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.054383863533048\"\>",
+                .054383863533047916,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.351461287844349\"\>",
+                -.35146128784434927,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.036780461704774\"\>",
+                .036780461704773601,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.306148389199546\"\>",
+                .30614838919954579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.435382796399849\"\>",
+                -.43538279639984862,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.014218420393005\"\>",
+                .014218420393005134,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.461830934257069\"\>",
+                .46183093425706889,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.487276978085690\"\>",
+                -.48727697808568959,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.041468269273342\"\>",
+                .041468269273342295,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.956667357502278\"\>",
+                -.95666735750227772,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.413404596536917\"\>",
+                -.41340459653691641,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.084034888207425\"\>",
+                .08403488820742519,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.779923810422858\"\>",
+                -.7799238104228583,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.444237776200861\"\>",
+                -.44423777620086108,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.102482025775968\"\>",
+                .10248202577596842,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.494100147412834\"\>",
+                -.49410014741283426,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.494100147412834\"\>",
+                -.49410014741283426,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.095986831742216\"\>",
+                .095986831742215589,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.148538712155651\"\>",
+                -.1485387121556507,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.554383863533048\"\>",
+                -.55438386353304792,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.072897093734371\"\>",
+                .072897093734370519,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.197022723101533\"\>",
+                .19702272310153282,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.614667579653262\"\>",
+                -.61466757965326158,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.044437151163993\"\>",
+                .044437151163992578,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.482846386111557\"\>",
+                .48284638611155684,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.664529950865235\"\>",
+                -.6645299508652347,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.018005727931648\"\>",
+                .018005727931647869,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.659589933190976\"\>",
+                .65958993319097625,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.695363130529179\"\>",
+                -.69536313052917942,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.033416562465089\"\>",
+                .033416562465088617,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.952396416732543\"\>",
+                -.95239641673254327,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.744819689989179\"\>",
+                -.74481968998917913,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.068124438478366\"\>",
+                .06812443847836612,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.758232717603808\"\>",
+                -.75823271760380795,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.758232717603808\"\>",
+                -.75823271760380795,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.084034888207425\"\>",
+                .08403488820742519,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.444237776200861\"\>",
+                -.44423777620086108,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.779923810422858\"\>",
+                -.7799238104228583,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.080124975391152\"\>",
+                .080124975391152278,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.064617203600151\"\>",
+                -.064617203600151385,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.806148389199546\"\>",
+                -.80614838919954579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.062362772594912\"\>",
+                .0623627725949117,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.315003369000558\"\>",
+                .31500336900055831,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.832372967976233\"\>",
+                -.83237296797623328,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.039117553014085\"\>",
+                .039117553014084712,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.628998310403505\"\>",
+                .62899831040350529,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.854064060795284\"\>",
+                -.85406406079528363,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.016229336623041\"\>",
+                .016229336623040835,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.823162009532240\"\>",
+                .82316200953224039,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.867477088409913\"\>",
+                -.86747708840991244,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.016339719022331\"\>",
+                .016339719022330747,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.949755413489287\"\>",
+                -.9497554134892866,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.949755413489287\"\>",
+                -.9497554134892866,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.033416562465089\"\>",
+                .033416562465088617,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.744819689989179\"\>",
+                -.74481968998917913,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.952396416732543\"\>",
+                -.95239641673254327,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.041468269273342\"\>",
+                .041468269273342295,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.413404596536917\"\>",
+                -.41340459653691641,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.956667357502278\"\>",
+                -.95666735750227772,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.039901010364923\"\>",
+                .039901010364922912,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.012723021914310\"\>",
+                -.012723021914310378,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.961830934257069\"\>",
+                -.96183093425706889,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.031435523240266\"\>",
+                .03143552324026571,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.387958552708296\"\>",
+                .3879585527082956,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.966994511011860\"\>",
+                -.96699451101186018,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.019988306531199\"\>",
+                .019988306531198988,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.719373646160558\"\>",
+                .71937364616055832,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.971265451781595\"\>",
+                -.97126545178159451,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {
+            TagBox[
+              InterpretationBox["\<\"     0.008383178231877\"\>",
+                .0083831782318768526,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"     0.924309369660666\"\>",
+                .92430936966066579,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)], 
+            TagBox[
+              InterpretationBox["\<\"    -0.973906455024851\"\>",
+                -.97390645502485107,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]}
+          },
+        RowSpacings->1,
+        ColumnSpacings->3,
+        RowAlignments->Baseline,
+        ColumnAlignments->{Left}],
+      (TableForm[ #, TableHeadings -> {None, {
+        Times[ "\t\t\t", "\!\(C\_k\)"], 
+        Times[ "\t\t\t", "\!\(X\_k\)"], 
+        Times[ "\t\t\t", "\!\(Y\_k\)"]}}]&)]], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 517}},
+WindowSize->{783, 483},
+WindowMargins->{{Automatic, 0}, {Automatic, 11}}
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1717, 49, 69, 1, 30, "Input"],
+Cell[1789, 52, 2226, 37, 385, "Input"],
+
+Cell[CellGroupData[{
+Cell[4040, 93, 761, 16, 113, "Input"],
+Cell[4804, 111, 30817, 796, 823, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+

@@ -1,0 +1,289 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 4.0,
+MathReader 4.0, or any compatible application. The data for the notebook 
+starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      9151,        247]*)
+(*NotebookOutlinePosition[      9805,        270]*)
+(*  CellTagsIndexPosition[      9761,        266]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(Clear["\<`*\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(<< NumericalMath`GaussianQuadrature`\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(n = 25;\)\), "\[IndentingNewLine]", 
+    \(\(f[u_, v_] := 
+        1\/8\ \((13 - u - 
+              2\ v)\)\ \((1\/4\ \((15 - u\ \((\(-3\) + v)\) + 7\ v)\))\)\^\(-\
+\(1\/2\)\);\)\), "\[IndentingNewLine]", 
+    \(\(Result = Table[0, {i, 1, n}];\)\), "\[IndentingNewLine]", 
+    \(\(For[m = 2, 
+        m \[LessEqual] n, \(m++\), \[IndentingNewLine]XI = 
+          Table[0, {i, 1, m}]; \[IndentingNewLine]WI = 
+          Table[0, {i, 1, m}]; \[IndentingNewLine]GQ = 
+          GaussianQuadratureWeights[m, \(-1\), 
+            1]; \[IndentingNewLine]Do[{XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+              GQ\_\(\(\[LeftDoubleBracket]\)\(i, 1\)\(\[RightDoubleBracket]\)\
+\); \[IndentingNewLine]WI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\
+\[RightDoubleBracket]\)\) = 
+              GQ\_\(\(\[LeftDoubleBracket]\)\(i, 2\)\(\[RightDoubleBracket]\)\
+\);}, {i, 1, 
+            m}]; \[IndentingNewLine]Result\_\(\(\[LeftDoubleBracket]\)\(m\)\(\
+\[RightDoubleBracket]\)\) = \[Sum]\+\(i = 1\)\%m\(\[Sum]\+\(j = 1\)\%m WI\_\(\
+\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\ WI\_\(\(\
+\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)\ f[
+                  XI\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\
+\), XI\_\(\(\[LeftDoubleBracket]\)\(j\)\(\[RightDoubleBracket]\)\)]\)];\)\), \
+"\[IndentingNewLine]", 
+    \(TableForm[
+      Table[{i, 
+          PaddedForm[
+            Result\_\(\(\[LeftDoubleBracket]\)\(i\)\(\[RightDoubleBracket]\)\)\
+, {20, 15}]}, {i, 2, 
+          n}], \[IndentingNewLine]TableHeadings -> {None, \
+{\*"\"\<\!\(n\^2\)\>\"", "\<\t\t\t\>" "\<Result\>"}}]\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[GridBox[{
+          {"\<\"\\!\\(n\\^2\\)\"\>", \("\t\t\t"\ "Result"\)},
+          {"2", 
+            TagBox[
+              InterpretationBox["\<\"     3.538042018537409\"\>",
+                3.5380420185374093,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"3", 
+            TagBox[
+              InterpretationBox["\<\"     3.548681950777742\"\>",
+                3.5486819507777421,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"4", 
+            TagBox[
+              InterpretationBox["\<\"     3.549525572963957\"\>",
+                3.5495255729639568,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"5", 
+            TagBox[
+              InterpretationBox["\<\"     3.549603973886602\"\>",
+                3.5496039738866019,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"6", 
+            TagBox[
+              InterpretationBox["\<\"     3.549612027291594\"\>",
+                3.5496120272915941,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"7", 
+            TagBox[
+              InterpretationBox["\<\"     3.549612911402360\"\>",
+                3.5496129114023605,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"8", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613013031479\"\>",
+                3.5496130130314789,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"9", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613025108831\"\>",
+                3.5496130251088314,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"10", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026580426\"\>",
+                3.5496130265804262,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"11", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026763296\"\>",
+                3.5496130267632964,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"12", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026786368\"\>",
+                3.5496130267863677,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"13", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789497\"\>",
+                3.5496130267894968,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"14", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789992\"\>",
+                3.5496130267899924,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"15", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789129\"\>",
+                3.549613026789129,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"16", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026789194\"\>",
+                3.5496130267891943,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"17", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026786854\"\>",
+                3.5496130267868535,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"18", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026777713\"\>",
+                3.5496130267777133,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"19", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026774801\"\>",
+                3.549613026774801,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"20", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026767568\"\>",
+                3.5496130267675676,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"21", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026825007\"\>",
+                3.5496130268250075,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"22", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026737036\"\>",
+                3.5496130267370356,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"23", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613026569079\"\>",
+                3.5496130265690788,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"24", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613025991078\"\>",
+                3.5496130259910781,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]},
+          {"25", 
+            TagBox[
+              InterpretationBox["\<\"     3.549613031422469\"\>",
+                3.5496130314224694,
+                AutoDelete->True],
+              (PaddedForm[ #, {20, 15}]&)]}
+          },
+        RowSpacings->1,
+        ColumnSpacings->3,
+        RowAlignments->Baseline,
+        ColumnAlignments->{Left}],
+      (TableForm[ #, TableHeadings -> {None, {"\!\(n\^2\)", 
+        Times[ "\t\t\t", "Result"]}}]&)]], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.0 for Microsoft Windows",
+ScreenRectangle->{{0, 800}, {0, 517}},
+WindowSize->{792, 483},
+WindowMargins->{{-15, Automatic}, {Automatic, 7}}
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1717, 49, 48, 1, 30, "Input"],
+Cell[1768, 52, 69, 1, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[1862, 57, 1659, 32, 299, "Input"],
+Cell[3524, 91, 5611, 153, 425, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+
