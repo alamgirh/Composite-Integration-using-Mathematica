@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Composite Numerical Integration  by alamgirh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Composite Numerical Integration </h1>
+      <h2 class="project-tagline">using mathematica</h2>
+      <a href="https://github.com/alamgirh/Composite-Integration-using-Mathematica" class="btn">View on GitHub</a>
+      <a href="https://github.com/alamgirh/Composite-Integration-using-Mathematica/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/alamgirh/Composite-Integration-using-Mathematica/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="composite-numerical-integration-cni-using-mathematica" class="anchor" href="#composite-numerical-integration-cni-using-mathematica" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Composite Numerical Integration (CNI) using Mathematica</h1>
+
+<p>Newton-Cotes formulas are not accurate for a large integral domain. The main idea of the CNI is to divide integral domain into subdomains and use simple integration rule for each subdomain.</p>
+
+<p>Using the Mathematica, I computed composite numerical integration over a quadrilateral region. We described the composite numerical integration over an arbitrary quadrilateral region in our following paper:</p>
+
+<p>Md. Shafiqul Islam and M. Alamgir Hossain (2009)- Numerical Integrations over an Arbitrary Quadrilateral Region, Applied Mathematics and Computations Volume 210, Issue 2, 15 April 2009, Pages 515-524.</p>
+
+<h2>
+<a id="run" class="anchor" href="#run" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run</h2>
+
+<h3>
+<a id="example-2-of-islam-and-hossain-2009" class="anchor" href="#example-2-of-islam-and-hossain-2009" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example 2 of Islam and Hossain (2009)</h3>
+
+<p>Enter the order of Gauss Legendre Quadrature rule: 3</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">C_k</th>
+<th align="left">X_k</th>
+<th align="left">Y_k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0.154320987654321</td>
+<td align="left">-0.874596669241483</td>
+<td align="left">0.674596669241483</td>
+</tr>
+<tr>
+<td align="left">0.151284361822039</td>
+<td align="left">-0.443649167310371</td>
+<td align="left">0.330947501931112</td>
+</tr>
+<tr>
+<td align="left">0.034784464623228</td>
+<td align="left">-0.012701665379258</td>
+<td align="left">-0.012701665379258</td>
+</tr>
+<tr>
+<td align="left">0.342542798671788</td>
+<td align="left">-0.830947501931112</td>
+<td align="left">-0.056350832689629</td>
+</tr>
+<tr>
+<td align="left">0.395061728395062</td>
+<td align="left">-0.250000000000000</td>
+<td align="left">-0.250000000000000</td>
+</tr>
+<tr>
+<td align="left">0.151284361822039</td>
+<td align="left">0.330947501931112</td>
+<td align="left">-0.443649167310371</td>
+</tr>
+<tr>
+<td align="left">0.273857510685414</td>
+<td align="left">-0.787298334620741</td>
+<td align="left">-0.787298334620741</td>
+</tr>
+<tr>
+<td align="left">0.342542798671788</td>
+<td align="left">-0.056350832689629</td>
+<td align="left">-0.830947501931112</td>
+</tr>
+<tr>
+<td align="left">0.154320987654321</td>
+<td align="left">0.674596669241483</td>
+<td align="left">-0.874596669241483</td>
+</tr>
+</tbody>
+</table>
+
+<p>Enter the value of n (between 1 and 50) then discretise T into 4xn^2 triangle:10</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">4 x n^2</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">4 x 1^2</td>
+<td align="left">14.991195582852475</td>
+</tr>
+<tr>
+<td align="left">4 x 2^2</td>
+<td align="left">19.267674833364271</td>
+</tr>
+<tr>
+<td align="left">4 x 3^2</td>
+<td align="left">20.238201270672942</td>
+</tr>
+<tr>
+<td align="left">4 x 4^2</td>
+<td align="left">20.562029516588154</td>
+</tr>
+<tr>
+<td align="left">4 x 5^2</td>
+<td align="left">20.693999549518534</td>
+</tr>
+<tr>
+<td align="left">4 x 6^2</td>
+<td align="left">20.755006700820118</td>
+</tr>
+<tr>
+<td align="left">4 x 7^2</td>
+<td align="left">20.785863805737211</td>
+</tr>
+<tr>
+<td align="left">4 x 8^2</td>
+<td align="left">20.802577184929046</td>
+</tr>
+<tr>
+<td align="left">4 x 9^2</td>
+<td align="left">20.812134862867111</td>
+</tr>
+<tr>
+<td align="left">4 x 10^2</td>
+<td align="left">20.817848407116379</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/alamgirh/Composite-Integration-using-Mathematica">Composite Numerical Integration </a> is maintained by <a href="https://github.com/alamgirh">alamgirh</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
